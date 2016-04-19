@@ -13,4 +13,9 @@ class TasksController extends Controller
     {
         return view('tasks.show', compact('project', 'task')); // se pasa el modelo a la vista
     }
+
+    public function destroy(Project $project, Task $task)
+    {
+        return true;
+    }
 }
