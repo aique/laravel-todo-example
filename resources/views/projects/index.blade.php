@@ -14,12 +14,24 @@
 
             @foreach($projects as $project)
 
-                <li><a href="{{ route('projects.show', $project->slug)  }}">{{ $project->name }}</a></li>
+                <li>
+
+                    {{ Form::open(array('class' => 'form-inline', 'method' => 'DELETE', 'route' => array('projects.destroy', $project->slug))) }}
+
+                        <a href="{{ route('projects.show', $project->slug)  }}">{{ $project->name }}</a>
+                        <a class="btn btn-info" href="{{ route('projects.edit', $project->slug) }}">Edit</a>
+                        {{ Form::submit('Delete', array('class' => 'btn btn-danger')) }}
+
+                    {{ Form::close() }}
+
+                </li>
 
             @endforeach
 
         </ul>
 
     @endif
+
+    <p><a class="btn btn-info" href="{{ route('projects.create') }}">Create Project</a></p>
 
 @endsection
